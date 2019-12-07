@@ -75,6 +75,27 @@ $(function () {
       slidesToScroll: 1,
       dots: true
     });
+  }
+
+  if ($('#programs-third')) {
+    $('#programs-third .third__slider').slick({
+      nextArrow: '<button class="slick-next slick-arrow"><img src="./images/icons/вправо.png" alt="arrow"></button>',
+      prevArrow: '<button class="slick-prev slick-arrow"><img src="./images/icons/left.png" alt="arrow"></button>',
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      arrows: true,
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }, {
+        breakpoint: 768,
+        settings: "unslick"
+      }]
+    });
   } // window.addEventListener('scroll', ()=> {
   //     let scrolled = window.pageYOffset || document.scrollTop;
   //     if (scrolled > 150) {
