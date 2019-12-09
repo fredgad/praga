@@ -96,6 +96,22 @@ $(function () {
         settings: "unslick"
       }]
     });
+  }
+
+  if ($('#stud-third')) {
+    $('#stud-third .third-slider').slick({
+      infinite: true,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      dots: true,
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    });
   } // window.addEventListener('scroll', ()=> {
   //     let scrolled = window.pageYOffset || document.scrollTop;
   //     if (scrolled > 150) {

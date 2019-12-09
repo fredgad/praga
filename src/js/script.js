@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
   const mainFirst = document.getElementById('main-first');
 
 })
-        
-        
+         
+
+
 $(function() {
 
 if($('.main-second-slider')) {
@@ -80,7 +81,6 @@ if($('.main-second-slider')) {
   });
 }
 
-
 if($('#dormit-third')) {
   $('#dormit-third .third__slider').slick({
     nextArrow: '<button class="slick-next slick-arrow"><span>Далее:<p>Страхов</p></span><img src="./images/icons/вправо.png" alt="arrow"></button>',
@@ -116,6 +116,23 @@ if($('#programs-third')) {
   });
 }
 
+if($('#stud-third')) {
+  $('#stud-third .third-slider').slick({
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1, 
+        }
+      }
+    ]
+  });
+}
 
 // window.addEventListener('scroll', ()=> {
 //     let scrolled = window.pageYOffset || document.scrollTop;
