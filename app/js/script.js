@@ -1,9 +1,13 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
-  var mainFirst = document.getElementById('main-first');
-});
+document.addEventListener("DOMContentLoaded", function () {});
 $(function () {
+  // window.addEventListener('scroll', ()=> {
+  //     let scrolled = window.pageYOffset || document.scrollTop;
+  //     if (scrolled > 150) {
+  //       console.log(scrolled)
+  //     }
+  // });
   if ($('.main-second-slider')) {
     $('.main-second-slider').slick({
       nextArrow: '<button class="slick-next slick-arrow"><img src="./images/icons/вправо.png" alt="arrow"></button>',
@@ -61,8 +65,7 @@ $(function () {
           slidesToShow: 1,
           slidesToScroll: 1
         }
-      } // settings: "unslick"
-      ]
+      }]
     });
   }
 
@@ -112,13 +115,31 @@ $(function () {
         }
       }]
     });
-  } // window.addEventListener('scroll', ()=> {
-  //     let scrolled = window.pageYOffset || document.scrollTop;
-  //     if (scrolled > 150) {
-  //       console.log(scrolled)
-  //     }
-  // });
-  // Events
+  }
+
+  if ($('#video-third')) {
+    $('#video-third .third-slider').slick({
+      nextArrow: '<button class="slick-next slick-arrow"><img src="./images/icons/вправо.png" alt="arrow"></button>',
+      prevArrow: '<button class="slick-prev slick-arrow"><img src="./images/icons/left.png" alt="arrow"></button>',
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      arrows: true,
+      responsive: [{
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }, {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    });
+  } // Events
   // Array.from(navMenu).map((el) => { // Nav menu slider
   //   el.addEventListener('mouseover', (e) => {
   //     let dataNav = el.getAttribute('data-nav');

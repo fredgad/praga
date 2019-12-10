@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", ()=> {
 
-  const mainFirst = document.getElementById('main-first');
+
 
 })
          
 
 
 $(function() {
+
+// window.addEventListener('scroll', ()=> {
+//     let scrolled = window.pageYOffset || document.scrollTop;
+//     if (scrolled > 150) {
+//       console.log(scrolled)
+//     }
+// });
+
 
 if($('.main-second-slider')) {
   $('.main-second-slider').slick({
@@ -76,7 +84,6 @@ if($('.main-second-slider')) {
           slidesToScroll: 1,  
         }
       }
-      // settings: "unslick"
     ]
   });
 }
@@ -134,12 +141,35 @@ if($('#stud-third')) {
   });
 }
 
-// window.addEventListener('scroll', ()=> {
-//     let scrolled = window.pageYOffset || document.scrollTop;
-//     if (scrolled > 150) {
-//       console.log(scrolled)
-//     }
-// });
+
+if($('#video-third')) {
+  $('#video-third .third-slider').slick({
+    nextArrow: '<button class="slick-next slick-arrow"><img src="./images/icons/вправо.png" alt="arrow"></button>',
+    prevArrow: '<button class="slick-prev slick-arrow"><img src="./images/icons/left.png" alt="arrow"></button>',
+    infinite: true,  
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2, 
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1, 
+        }
+      }
+    ]
+  });
+}
+
+
 
 
 
