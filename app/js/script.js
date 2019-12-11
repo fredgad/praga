@@ -2,12 +2,62 @@
 
 document.addEventListener("DOMContentLoaded", function () {});
 $(function () {
-  // window.addEventListener('scroll', ()=> {
-  //     let scrolled = window.pageYOffset || document.scrollTop;
-  //     if (scrolled > 150) {
-  //       console.log(scrolled)
-  //     }
+  if ($('#ArrSlider').attr('id-values')) {
+    var data = JSON.parse($('#ArrSlider').attr('id-values'));
+    var prevPos = data.length - 1,
+        nextPos = 1,
+        current = 0;
+
+    var setPlace = function setPlace() {
+      $('#dormit-third .slick-prev p').html(Object.values(data[prevPos]));
+      $('#dormit-third .slick-next p').html(Object.values(data[nextPos]));
+    };
+
+    $('#dormit-third .third__slider').on('afterChange', function (e, s, currentSlide) {
+      if (current < currentSlide) {
+        nextPos = nextPos >= data.length - 1 ? 0 : nextPos - 1;
+        prevPos = prevPos === 0 ? data.length - 1 : prevPos - 1;
+      } else if (current > currentSlide) {
+        nextPos = nextPos >= data.length - 1 ? 0 : nextPos + 1;
+        prevPos = prevPos === 0 ? data.length - 1 : prevPos + 1;
+      }
+
+      setPlace();
+      current = currentSlide;
+    });
+    $('#dormit-third .third__slider').on('init', function () {
+      setPlace();
+    });
+  }
+
+  $(window).on('click', function (e) {
+    if (e.target.classList.contains('act')) {
+      $('.nav').toggleClass('active');
+      console.log('sad');
+    } else if (e.target.classList.contains('not')) {
+      console.log('same');
+    } else {
+      $('.nav').removeClass('active');
+      console.log('wow');
+    }
+  }); // $('.nav').on('click', (e)=> {
+  //     $('.nav__body').toggleClass('active')
+  //     alert('sad') 
   // });
+
+  window.addEventListener('scroll', function () {
+    var scrolled = window.pageYOffset || document.scrollTop;
+
+    if (scrolled > 60) {
+      // Mobile-menu
+      $('.nav').css('top', '20px');
+    } else {
+      $('.nav').css('top', '120px');
+    }
+
+    $('.nav__body').removeClass('active');
+  });
+
   if ($('.main-second-slider')) {
     $('.main-second-slider').slick({
       nextArrow: '<button class="slick-next slick-arrow"><img src="./images/icons/вправо.png" alt="arrow"></button>',
