@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 $(function() {
 
+  
 
   if ($('#ArrSlider').attr('id-values')) {
     const data = JSON.parse($('#ArrSlider').attr('id-values'));
@@ -38,42 +39,47 @@ $(function() {
   }
 
 
-  $(window).on('click', (e)=> {
+  $(window).on('click', (e)=> { //Mobile menu event
     if(e.target.classList.contains('act')){
       $('.nav').toggleClass('active')
-      console.log('sad') 
     } else if(e.target.classList.contains('not')) {
-      console.log('same')
+      // do nothing
     } else {
       $('.nav').removeClass('active')
-      console.log('wow') 
     }
   })
-
-  // $('.nav').on('click', (e)=> {
-  //     $('.nav__body').toggleClass('active')
-  //     alert('sad') 
-  // });
   
 
   window.addEventListener('scroll', ()=> {
     let scrolled = window.pageYOffset || document.scrollTop; 
 
-    if (scrolled > 60) { // Mobile-menu
-      $('.nav').css('top', '20px');
-    } else {
-      $('.nav').css('top', '120px');
+
+    if($(window).width() <= 768) { // Mobile-menu
+      if (scrolled > 60) {
+        $('.nav').css('top', '20px');
+      } else {
+        $('.nav').css('top', '110px');
+        console.log(120)
+      }
     }
     
-    
-    $('.nav__body').removeClass('active')
+    if($('#cond-third')[0]) { // conditions animation
+      if(scrolled > $('#cond-third').offset().top - $(window).height() + 150) {
+        const blocks = document.querySelectorAll('#cond-third .third__block');
+        for(let x = 0; x < 6; x++) {
+          setTimeout(() => {
+            blocks[x].style.transform = 'scale(1) translateX(0)'
+          }, x * 300) 
+        }    
+      }
+    }
+
+
+    $('.nav').removeClass('active') //remove mobile menu if scroll
 });
 
 
 if($('.main-second-slider')) {
-
-
-
   $('.main-second-slider').slick({
     nextArrow: '<button class="slick-next slick-arrow"><img src="./images/icons/вправо.png" alt="arrow"></button>',
     prevArrow: '<button class="slick-prev slick-arrow"><img src="./images/icons/left.png" alt="arrow"></button>',
